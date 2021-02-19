@@ -51,6 +51,13 @@ async def on_member_join(member):
     greeting = getwelcomemsg(member)
     await channel.send('{0}'.format(greeting))
 
+@bot.event
+async def on_member_remove(member):
+  channel = member.guild.system_channel
+  if channel is not None:
+    greeting = "Well, guess {0} decided to check out.".format(member.mention)
+    await channel.send('{0}'.format(greeting))
+
 #@bot.event
 #async def on_message(message):
 #  if message.author == bot.user:
